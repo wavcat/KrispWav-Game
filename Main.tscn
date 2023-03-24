@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2sw48w3v3jdv"]
+
+[ext_resource type="Texture2D" uid="uid://c83no4ockvrnd" path="res://icon.svg" id="1_s1te0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(329, 186)
+scale = Vector2(3.49219, 1)
+texture = ExtResource("1_s1te0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 217.0
+offset_top = 81.0
+offset_right = 489.0
+offset_bottom = 121.0
+text = "HELLO THIS IS RPG GAME"
