@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7k8b820gx7xb"]
+
+[ext_resource type="Script" path="res://Global/main_menu.gd" id="1_rvemg"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_rvemg")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 456.0
+offset_top = 216.0
+offset_right = 497.0
+offset_bottom = 247.0
+scale = Vector2(6.44413, 4.23056)
+text = "Play"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 457.0
+offset_top = 361.0
+offset_right = 499.0
+offset_bottom = 392.0
+scale = Vector2(6.22777, 3.98297)
+text = "Quit"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 322)
+zoom = Vector2(2, 2)
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
