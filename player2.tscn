@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://byldpveln86t3"]
+[gd_scene load_steps=30 format=3 uid="uid://byldpveln86t3"]
 
 [ext_resource type="Script" path="res://player2.gd" id="1_nsy1e"]
 [ext_resource type="Texture2D" uid="uid://3ts22gbi230v" path="res://Sprites/Characters/Basic Charakter Spritesheet.png" id="2_s5m2k"]
+[ext_resource type="Texture2D" uid="uid://bdhh6i0ou5pr" path="res://Character/—Pngtree—vector forward icon_4184777.png" id="2_slgt5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lherf"]
 radius = 3.0
@@ -238,16 +239,25 @@ transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_0bi3u"]
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(1, 0)
+position = Vector2(2, -3)
 script = ExtResource("1_nsy1e")
-metadata/_edit_group_ = true
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(-2, 9)
+scale = Vector2(0.024, 0.018)
+texture = ExtResource("2_slgt5")
+centered = false
+offset = Vector2(-136, -515)
+
+[node name="RayCast2D" type="RayCast2D" parent="Arrow"]
+scale = Vector2(50, 66.6667)
+target_position = Vector2(15, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, 5)
 texture = ExtResource("2_s5m2k")
 hframes = 4
 vframes = 4
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 10)

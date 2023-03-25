@@ -2,12 +2,19 @@ extends CharacterBody2D
 
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
+@onready var ray:=$Arrow/RayCast2D
+@onready var pointer:= $Arrow
 
 
 # parameters/Idle/blend_position
 
 #@onready var animation_tree = $AnimationTree
 #@onready var state_machine = animation_tree.get("parameters/playback")
+
+func rotate_pointer(point_direction:Vector2)->void:
+	var temp = rad_to_deg(atan2(point_direction.y, point_direction.x))
+	pointer.rotation_degrees = temp
+
 
 func _ready():
 	update_animation_parameters(starting_direction)
@@ -24,6 +31,14 @@ func _physics_process(_delta_):
 	velocity = input_direction * move_speed
 	
 	move_and_slide()
+	if velocity != Vector2.ZERO:
+		rotate_pointer(velocity)
+	
+	#if $Arrow/RayCast2D.is_colliding():
+		#this is for knowing if you are colliding with something, just a test because ⬇️
+	if Input.is_action_just_pressed("interact") and $Arrow/RayCast2D.is_colliding():
+		print("You got it.")
+	
 	
 func update_animation_parameters(move_input : Vector2):
 	if(move_input != Vector2.ZERO):
