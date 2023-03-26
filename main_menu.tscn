@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7k8b820gx7xb"]
+[gd_scene load_steps=3 format=3 uid="uid://b7k8b820gx7xb"]
 
 [ext_resource type="Script" path="res://Global/main_menu.gd" id="1_rvemg"]
+[ext_resource type="AudioStream" uid="uid://csp4fh05ijtry" path="res://Audio/Music/2023-03-26 00-01-39_Trim.mp3" id="2_r5r83"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_rvemg")
@@ -33,7 +34,12 @@ text = "Quit"
 position = Vector2(576, 322)
 zoom = Vector2(2, 2)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_r5r83")
+autoplay = true
+max_distance = 1e+08
+
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
