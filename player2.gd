@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var ray:=$Arrow/RayCast2D
 @onready var pointer:= $Arrow
 
-
 # parameters/Idle/blend_position
 
 #@onready var animation_tree = $AnimationTree
@@ -36,8 +35,7 @@ func _physics_process(_delta_):
 	
 	#if $Arrow/RayCast2D.is_colliding():
 		#this is for knowing if you are colliding with something, just a test because ⬇️
-	if Input.is_action_just_pressed("interact") and $Arrow/RayCast2D.is_colliding():
-		print("You got it.")
+	
 	
 	
 func update_animation_parameters(move_input : Vector2):

@@ -3,11 +3,13 @@
 [ext_resource type="Script" path="res://controls.gd" id="1_qosx4"]
 
 [node name="Node2D" type="Node2D"]
+scale = Vector2(0.595434, 0.555024)
 script = ExtResource("1_qosx4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 463.0
-offset_bottom = 211.0
+offset_left = 2.0
+offset_right = 371.0
+offset_bottom = 209.0
 text = "W - Up
 A - Left
 D - Right
@@ -18,16 +20,12 @@ E - Interact
 
 ESC - Quit (Without saves)"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(233, 133)
-scale = Vector2(0.708851, -0.994418)
-zoom = Vector2(4, 4)
-
 [node name="Button2" type="Button" parent="."]
 offset_left = 2.0
 offset_top = 209.0
 offset_right = 47.0
 offset_bottom = 240.0
 text = "Back"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

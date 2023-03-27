@@ -243,15 +243,17 @@ position = Vector2(2, -3)
 script = ExtResource("1_nsy1e")
 
 [node name="Arrow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-2, 9)
 scale = Vector2(0.024, 0.018)
 texture = ExtResource("2_slgt5")
 centered = false
-offset = Vector2(-136, -515)
+offset = Vector2(-47, -515)
 
 [node name="RayCast2D" type="RayCast2D" parent="Arrow"]
+position = Vector2(805.667, 2.08165e-12)
 scale = Vector2(50, 66.6667)
-target_position = Vector2(15, 0)
+target_position = Vector2(0.833333, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, 5)
@@ -276,3 +278,5 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_0bi3u")
 parameters/Idle/blend_position = Vector2(2.08165e-12, 1)
 parameters/Walk/blend_position = Vector2(-0.27663, 0.266013)
+
+[node name="Camera2D" type="Camera2D" parent="."]
