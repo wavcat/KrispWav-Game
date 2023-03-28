@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwljs3nsin7po"]
+
+[ext_resource type="Script" path="res://Chunks/World Generation Testing.gd" id="1_gudor"]
+[ext_resource type="TileSet" uid="uid://bjay4b3x1oko3" path="res://Sprites/Tilesets/ground tiles/new tiles/Grass Tileset.tres" id="2_iy478"]
+
+[node name="World Generation Testing" type="Node2D"]
+script = ExtResource("1_gudor")
+
+[node name="Tilemap" type="TileMap" parent="."]
+tile_set = ExtResource("2_iy478")
+format = 2
+layer_0/name = "Background Layer"
+layer_1/name = "Ground Layer"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()

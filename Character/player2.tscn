@@ -1,8 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://byldpveln86t3"]
+[gd_scene load_steps=29 format=3 uid="uid://byldpveln86t3"]
 
-[ext_resource type="Script" path="res://player2.gd" id="1_nsy1e"]
+[ext_resource type="Script" path="res://Character/player2.gd" id="1_8tjr5"]
 [ext_resource type="Texture2D" uid="uid://3ts22gbi230v" path="res://Sprites/Characters/Basic Charakter Spritesheet.png" id="2_s5m2k"]
-[ext_resource type="Texture2D" uid="uid://bdhh6i0ou5pr" path="res://Character/—Pngtree—vector forward icon_4184777.png" id="2_slgt5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lherf"]
 radius = 3.0
@@ -240,13 +239,12 @@ transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(2, -3)
-script = ExtResource("1_nsy1e")
+script = ExtResource("1_8tjr5")
 
 [node name="Arrow" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-2, 9)
 scale = Vector2(0.024, 0.018)
-texture = ExtResource("2_slgt5")
 centered = false
 offset = Vector2(-47, -515)
 

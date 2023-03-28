@@ -21,14 +21,14 @@ func _ready():
 func _physics_process(_delta_):
 
 	var input_direction = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up")
+		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
+		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
 	
 	update_animation_parameters(input_direction)
 	
 	velocity = input_direction * move_speed
-	
+
 	move_and_slide()
 	if velocity != Vector2.ZERO:
 		rotate_pointer(velocity)
