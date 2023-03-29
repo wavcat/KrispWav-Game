@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwljs3nsin7po"]
+[gd_scene load_steps=4 format=3 uid="uid://dwljs3nsin7po"]
 
 [ext_resource type="Script" path="res://Chunks/World Generation Testing.gd" id="1_gudor"]
 [ext_resource type="TileSet" uid="uid://bjay4b3x1oko3" path="res://Sprites/Tilesets/ground tiles/new tiles/Grass Tileset.tres" id="2_iy478"]
+[ext_resource type="Texture2D" uid="uid://b0jd21eas2fh8" path="res://Sprites/Tilesets/ground tiles/new tiles/Grass Base.png" id="2_j3j70"]
 
 [node name="World Generation Testing" type="Node2D"]
 script = ExtResource("1_gudor")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.254902, 0.92549, 0.478431, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_j3j70")
+stretch_mode = 1
 
 [node name="Tilemap" type="TileMap" parent="."]
 tile_set = ExtResource("2_iy478")
@@ -17,3 +25,6 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
+
+[node name="ChunkBoundaries" type="Node2D" parent="."]
+visible = false
