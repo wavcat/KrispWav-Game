@@ -289,5 +289,5 @@ func _set_player_starting_pos():
 	$Player/Camera2D.limit_left = 0+tile_size.x/2
 	$Player/Camera2D.limit_top = 0+tile_size.y/2
 	$Player/Camera2D.limit_right = world_size.x-tile_size.x/2
-	$Player/Camera2D.limit_bottom = world_size.y-16-tile_size.y/2d
+	$Player/Camera2D.limit_bottom = world_size.y-16-tile_size.y/2
 
