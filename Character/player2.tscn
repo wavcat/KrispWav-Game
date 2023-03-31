@@ -278,3 +278,5 @@ parameters/Idle/blend_position = Vector2(2.08165e-12, 1)
 parameters/Walk/blend_position = Vector2(-0.27663, 0.266013)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0

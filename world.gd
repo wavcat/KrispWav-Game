@@ -25,6 +25,7 @@ var fill_percent = 0.5
 var walker_destroy_chance = (0.2)
 var neighbors4 = [ [1, 0], [-1, 0], [0, 1], [0, -1]]
 var neighbors8 = [ [1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, -1], [1, -1], [-1, 1]]
+var player_starting_tile
 var Tiles = {
 	"empty": -1,
 	"wall": 0,
@@ -37,6 +38,9 @@ class Walker:
 	var pos: Vector2
 
 func _ready():
+	_generate_world()
+
+func _generate_world():
 	rng.randomize()
 	_init_walkers()
 	_init_grid()
@@ -51,6 +55,7 @@ func _ready():
 	_generate_tree_points()
 	_generate_tall_grass_points()
 	_generate_rock_points()
+	_set_player_starting_pos()
 #	$Tilemap.set_cells_terrain_connect(1,cliffs,0,2)
 	pass # Replace with function body.
 
@@ -219,7 +224,6 @@ func _spawn_tiles():
 				Tiles.wall:
 					$Tilemap.set_cells_terrain_connect(0,[Vector2(x,y)],0,2)
 					pass
-	print(count.size())
 
 func _generate_tree_points():
 	var tiles = []
@@ -253,6 +257,9 @@ func _generate_tall_grass_points():
 		if $Tilemap.get_cell_atlas_coords(2,tile) == Vector2i(-1,-1):
 			$Tilemap.set_cell(2,tile,0,Vector2(4,8),0)
 
+func _clear_tilemaps():
+	$Tilemap.clear()
+
 func _generate_rock_points():
 	var tiles = []
 	var points = poisson_disc_sampling.generate_points(16,[Vector2(0,0),Vector2(1024,0),Vector2(1024,1024),Vector2(0,1024)], 10)
@@ -270,21 +277,17 @@ func _generate_rock_points():
 		if $Tilemap.get_cell_atlas_coords(2,tile) == Vector2i(-1,-1):
 			$Tilemap.set_cell(2,tile,0,Vector2(5,8),0)
 
-func _clear_tilemaps():
-	$Tilemap.clear()
 
-func _input(event):
-	if Input.is_key_pressed(KEY_SPACE):
-		_init_walkers()
-		_init_grid()
-		_clear_tilemaps()
-		_create_random_path()
-		_create_walls()
-		_remove_singletons()
-		_pad_path()
-		_remove_diagonals(Tiles.dirt)
-		_spawn_tiles()
-		_generate_tree_points()
-		_generate_tall_grass_points()
-		_generate_rock_points()
-		
+func _set_player_starting_pos():
+	var possible_tiles = []
+	for x in width:
+		for y in height:
+			if $Tilemap.get_cell_atlas_coords(2,Vector2(x,y)) == Vector2i(-1,-1) and $Tilemap.get_cell_source_id(0,Vector2(x,y)) == 2:
+				possible_tiles.append(Vector2(x,y))
+	player_starting_tile = choose(possible_tiles)
+	$Player.global_position = $Tilemap.map_to_local(player_starting_tile)
+	$Player/Camera2D.limit_left = 0+tile_size.x/2
+	$Player/Camera2D.limit_top = 0+tile_size.y/2
+	$Player/Camera2D.limit_right = world_size.x-tile_size.x/2
+	$Player/Camera2D.limit_bottom = world_size.y-16-tile_size.y/2d
+
