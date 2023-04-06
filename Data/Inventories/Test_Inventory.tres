@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=10 format=3 uid="uid://dc5fbxrm0q7fr"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Classes/Inventory_Class.gd" id="1_juhgx"]
-[ext_resource type="Resource" uid="uid://duo7pvk36pk2m" path="res://Databases/Items/Test Item.tres" id="2_w45mk"]
+[ext_resource type="Resource" uid="uid://duo7pvk36pk2m" path="res://Data/Items/Test Item.tres" id="2_w45mk"]
 [ext_resource type="Script" path="res://Scripts/Classes/Slot_Class.gd" id="3_g2sq4"]
-[ext_resource type="Resource" uid="uid://d12gkkdnntmpc" path="res://Databases/Items/Test Item 2.tres" id="4_4pipl"]
+[ext_resource type="Resource" uid="uid://d12gkkdnntmpc" path="res://Data/Items/Test Item 2.tres" id="4_4pipl"]
 
 [sub_resource type="Resource" id="Resource_pmtqq"]
 script = ExtResource("3_g2sq4")

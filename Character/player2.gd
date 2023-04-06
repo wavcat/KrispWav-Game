@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
 signal toggle_inventory
+
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var ray:=$Arrow/RayCast2D
 @onready var pointer:= $Arrow
 
 @export var player_inventory: InventoryData
+@onready var interact_ray = $InteractRay
 
 # parameters/Idle/blend_position
 
@@ -16,11 +18,13 @@ signal toggle_inventory
 func rotate_pointer(point_direction:Vector2)->void:
 	var temp = rad_to_deg(atan2(point_direction.y, point_direction.x))
 	pointer.rotation_degrees = temp
+	interact_ray.rotation_degrees = temp
 
 func _unhandled_input(event: InputEvent):
 	if Input.is_action_just_pressed("ui_focus_next"):
 		toggle_inventory.emit()
-	
+	if Input.is_action_just_pressed("ui_accept"):
+		interact()
 
 
 func _ready():
@@ -56,3 +60,7 @@ func pick_new_state():
 		$AnimationPlayer.travel("Walk")
 	else:
 		$AnimationPlayer.travel("Idle")
+
+func interact():
+	if interact_ray.is_colliding():
+		interact_ray.get_collider().player_interact()

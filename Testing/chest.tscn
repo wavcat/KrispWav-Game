@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuhwcj4dmk70j"]
+
+[ext_resource type="Script" path="res://Testing/chest.gd" id="1_rrlu5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qg3mm"]
+albedo_color = Color(0.458824, 0.337255, 0.156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y7xwg"]
+material = SubResource("StandardMaterial3D_qg3mm")
+size = Vector3(16, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi304"]
+size = Vector2(18, 18)
+
+[node name="Chest" type="StaticBody2D" groups=["external_inventory"]]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_rrlu5")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("BoxMesh_y7xwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xi304")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

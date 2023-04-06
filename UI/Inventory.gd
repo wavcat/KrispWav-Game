@@ -6,7 +6,14 @@ const Slot = preload("res://UI/Slot.tscn")
 func set_inventory(inventory_data: InventoryData) ->void:
 	inventory_data.inventory_updated.connect(populate_item_grid)
 	populate_item_grid(inventory_data)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
+
+func clear_inventory(inventory_data: InventoryData) ->void:
+	inventory_data.inventory_updated.disconnect(populate_item_grid)
+
+
+
 
 func populate_item_grid(inventory_data: InventoryData) -> void:
 	for child in item_grid.get_children():
