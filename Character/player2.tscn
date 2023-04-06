@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://byldpveln86t3"]
+[gd_scene load_steps=30 format=3 uid="uid://byldpveln86t3"]
 
 [ext_resource type="Script" path="res://Character/player2.gd" id="1_8tjr5"]
 [ext_resource type="Texture2D" uid="uid://3ts22gbi230v" path="res://Sprites/Characters/Basic Charakter Spritesheet.png" id="2_s5m2k"]
+[ext_resource type="Resource" uid="uid://dc5fbxrm0q7fr" path="res://Databases/Inventories/Test_Inventory.tres" id="2_t018e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lherf"]
 radius = 3.0
@@ -240,6 +241,7 @@ transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(2, -3)
 script = ExtResource("1_8tjr5")
+player_inventory = ExtResource("2_t018e")
 
 [node name="Arrow" type="Sprite2D" parent="."]
 visible = false

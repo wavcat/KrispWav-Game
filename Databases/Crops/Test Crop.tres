@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=2 format=3 uid="uid://d4n4qe3qrh2ql"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/Crop Class.gd" id="1_sboj1"]
+
+[resource]
+script = ExtResource("1_sboj1")
+ID = 0
+CropName = "Test Crop"
+Stage1Time = 5
+Stage2Time = 4
+Stage3Time = 2
+Stage4Time = 1
+Repeats = false
+TotalTime = 12
+BaseHarvestAmount = 3
+Stage1AtlasCoords = Vector2(0, 0)
+Stage2AtlasCoords = Vector2(0, 0)
+Stage3AtlasCoords = Vector2(0, 0)
+Stage4AtlasCoords = Vector2(0, 0)
+NeedsSpace = false
+MinWaterLevel = 3
+MaxWaterLevel = 4
+NeededSoil = 1
+ProduceItemID = 0

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://duo7pvk36pk2m"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/Item Class.gd" id="1_s1nag"]
+
+[resource]
+script = ExtResource("1_s1nag")
+ID = 0
+Name = "Test Item 1"
+Description = "Just a test icon"
+ItemType = null
+ResourcePath = ""
+Quantity = 20
+StackSize = 0
+Stackable = true
+BaseValue = 0
+TileAtlasCoords = Vector2(0, 0)

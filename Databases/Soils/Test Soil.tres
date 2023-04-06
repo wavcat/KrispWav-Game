@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Soil" load_steps=2 format=3 uid="uid://bownuv10x2hb8"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/Soil_Class.gd" id="1_vbweo"]
+
+[resource]
+script = ExtResource("1_vbweo")
+ID = 0
+SoilType = "Test Soil"
+Sand = 0
+Silt = 0
+Clay = 0
+SoilAtlasCoords = Vector2(0, 0)

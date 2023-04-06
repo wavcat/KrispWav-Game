@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d12gkkdnntmpc"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/Item Class.gd" id="1_qle1f"]
+[ext_resource type="Texture2D" uid="uid://dg0moe5y5ebsu" path="res://Sprites/Item Icons/Test Rock Item.png" id="1_vsutb"]
+
+[resource]
+script = ExtResource("1_qle1f")
+ID = 0
+Name = "Test Item 2"
+Description = "Just a Rock"
+ItemType = 5
+ResourcePath = ""
+Quantity = 0
+Icon = ExtResource("1_vsutb")
+StackSize = 0
+Stackable = true
+BaseValue = 0
+TileAtlasCoords = Vector2(0, 0)

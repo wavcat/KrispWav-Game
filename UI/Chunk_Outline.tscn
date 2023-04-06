@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dneejfbt24tpr"]
+
+[ext_resource type="Script" path="res://UI/Chunk Outline.gd" id="1_as17l"]
+[ext_resource type="Texture2D" uid="uid://cp3jfjxoits65" path="res://Sprites/Tilesets/Chunk Outline.png" id="2_8mld2"]
+
+[node name="Chunk Outline" type="Node2D"]
+script = ExtResource("1_as17l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8mld2")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
