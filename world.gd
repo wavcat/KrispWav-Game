@@ -482,8 +482,7 @@ func _set_player_starting_pos():
 
 
 
-
-
+#Receives the signal from the InventoryInterface node that an item has been dropped and instantiates the item into the world.
 func _on_inventory_interface_drop_slot_data(slot_data):
 	print ("This is processing")
 	var pickup = PickUp.instantiate()

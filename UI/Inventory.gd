@@ -3,18 +3,19 @@ extends PanelContainer
 const Slot = preload("res://UI/Slot.tscn")
 @onready var item_grid : GridContainer = $MarginContainer/GridContainer
 
+#Links the inventory to the variable and populates its' slots
 func set_inventory(inventory_data: InventoryData) ->void:
 	inventory_data.inventory_updated.connect(populate_item_grid)
 	populate_item_grid(inventory_data)
 
 
-
+#Clears the inventory
 func clear_inventory(inventory_data: InventoryData) ->void:
 	inventory_data.inventory_updated.disconnect(populate_item_grid)
 
 
 
-
+#Loads the individual items within the inventory as children.
 func populate_item_grid(inventory_data: InventoryData) -> void:
 	for child in item_grid.get_children():
 		child.queue_free()

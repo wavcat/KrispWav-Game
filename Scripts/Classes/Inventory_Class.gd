@@ -7,6 +7,7 @@ signal inventory_interact(inventory: InventoryData, index: int, button: int)
 
 @export var slot_datas: Array[SlotData]
 
+#Grabs the item data of the item you left clicked on. Only called when you left click an item slot in an inventory.
 func grab_slot_data(index: int) -> SlotData:
 	var slot_data = slot_datas[index]
 	
@@ -18,7 +19,7 @@ func grab_slot_data(index: int) -> SlotData:
 		return null
 
 
-
+#Drops the item data you are currently holding onto that slot. Only called when you left click a slot while holding an item.
 func drop_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
 	var slot_data = slot_datas[index]
 	var return_slot_data: SlotData
@@ -32,7 +33,7 @@ func drop_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
 	return return_slot_data
 
 
-
+#Drops a single item of the item data you are currently holding onto that slot. Only called when you right click a slot while holding an item.
 func drop_single_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
 	var slot_data = slot_datas[index]
 	
@@ -47,15 +48,13 @@ func drop_single_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
 	else:
 		return null
 
-
+##Adds the item you picked up. Only called when you run into the pick up item scene in the world to add an item to your inventory.
 func pick_up_slot_data(slot_data: SlotData) -> bool:
-
 	for index in slot_datas.size():
 		if slot_datas[index] and slot_datas[index].can_fully_merge_with(slot_data):
 			slot_datas[index].fully_merge_with(slot_data)
 			inventory_updated.emit(self)
 			return true
-
 	for index in slot_datas.size():
 		if not slot_datas[index]:
 			slot_datas[index] = slot_data
@@ -63,5 +62,7 @@ func pick_up_slot_data(slot_data: SlotData) -> bool:
 			return true
 	return false
 
+
+#Emits the slot information when you click on it. Used for grabbing and drop slot information for items.
 func on_slot_clicked(index: int, button: int):
 	inventory_interact.emit(self, index, button)
