@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvvh11gtvxkn3"]
+[gd_scene load_steps=19 format=3 uid="uid://cvvh11gtvxkn3"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_3pjnb"]
 [ext_resource type="TileSet" uid="uid://bjay4b3x1oko3" path="res://Sprites/Tilesets/ground tiles/new tiles/Grass Tileset.tres" id="1_plow7"]
@@ -13,18 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/Classes/Inventory_Class.gd" id="11_uefbb"]
 [ext_resource type="Resource" uid="uid://d12gkkdnntmpc" path="res://Data/Items/Test Item 2.tres" id="12_15ii8"]
 [ext_resource type="Script" path="res://Scripts/Classes/Slot_Class.gd" id="13_ip4pb"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4o1k"]
-shader = ExtResource("6_khvpm")
-shader_parameter/radius = null
-shader_parameter/player_pos = null
-shader_parameter/screen_size = null
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjlvv"]
-shader = ExtResource("6_khvpm")
-shader_parameter/radius = null
-shader_parameter/player_pos = null
-shader_parameter/screen_size = null
+[ext_resource type="PackedScene" uid="uid://d3oxc7y0eajik" path="res://Data/Items/pick_up.tscn" id="14_lmifc"]
 
 [sub_resource type="Resource" id="Resource_glebe"]
 script = ExtResource("13_ip4pb")
@@ -35,12 +24,22 @@ quantity = 10
 script = ExtResource("11_uefbb")
 slot_datas = Array[ExtResource("13_ip4pb")]([SubResource("Resource_glebe"), null, null, null, null, null, null, null, null, null])
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjlvv"]
+shader = ExtResource("6_khvpm")
+shader_parameter/radius = null
+shader_parameter/player_pos = null
+shader_parameter/screen_size = null
+
+[sub_resource type="Resource" id="Resource_c1k5x"]
+script = ExtResource("13_ip4pb")
+item_data = ExtResource("12_15ii8")
+quantity = 1
+
 [node name="World" type="Node2D"]
-material = SubResource("ShaderMaterial_l4o1k")
 script = ExtResource("1_3pjnb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.176471, 0.968627, 0.34902, 1)
+modulate = Color(0.176471, 0.752941, 0.34902, 1)
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_s27aa")
@@ -74,10 +73,17 @@ layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array()
 script = ExtResource("2_js1rj")
 
+[node name="Chest" parent="." instance=ExtResource("10_x271p")]
+position = Vector2(500, 500)
+inventory_data = SubResource("Resource_xjn6e")
+
 [node name="Player" parent="." instance=ExtResource("3_g4m0v")]
 material = SubResource("ShaderMaterial_hjlvv")
+collision_layer = 2
+collision_mask = 0
 
 [node name="ChunkBoundaries" type="Node2D" parent="."]
+visible = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -85,8 +91,8 @@ material = SubResource("ShaderMaterial_hjlvv")
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 480.0
+offset_bottom = 270.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("6_g0nea")
@@ -112,7 +118,10 @@ modulate = Color(1, 1, 1, 0.588235)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 
-[node name="Chest" parent="." instance=ExtResource("10_x271p")]
-position = Vector2(500, 500)
-collision_layer = 4
-inventory_data = SubResource("Resource_xjn6e")
+[node name="PickUp" parent="." instance=ExtResource("14_lmifc")]
+position = Vector2(135, 66)
+slot_data = SubResource("Resource_c1k5x")
+
+[connection signal="drop_slot_data" from="UI/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
+[connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_gui_input"]
+[connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_visibility_changed"]

@@ -10,7 +10,7 @@ material = SubResource("StandardMaterial3D_qg3mm")
 size = Vector3(16, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xi304"]
-size = Vector2(18, 18)
+size = Vector2(16, 16)
 
 [node name="Chest" type="StaticBody2D" groups=["external_inventory"]]
 collision_layer = 5

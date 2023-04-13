@@ -2,6 +2,7 @@ extends Node2D
 @onready var player = $Player
 @onready var inventory_interface = $UI/InventoryInterface
 
+const PickUp = preload("res://Data/Items/pick_up.tscn")
 
 var tile_size = Vector2(16,16) # in pixels
 var world_size = Vector2(1024,1024) #in pixels
@@ -67,16 +68,8 @@ func _generate_world():
 	_generate_tall_grass_points()
 	_generate_rock_points()
 	_set_player_starting_pos()
-	self.material.set_shader_parameter("radius", 1)
 #	$Tilemap.set_cells_terrain_connect(1,cliffs,0,2)
 	pass # Replace with function body.
-
-
-func _process(_delta):
-	self.material.set_shader_parameter("player_pos ", $Player.global_position)
-
-
-	pass
 
 
 
@@ -89,10 +82,10 @@ func choose(array):
 func toggle_inventory_interface(external_inventory_owner = null):
 	inventory_interface.visible = not inventory_interface.visible
 	
-	if inventory_interface.visible:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+#	if inventory_interface.visible:
+#		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+#	else:
+#		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	if external_inventory_owner and inventory_interface.visible:
 		inventory_interface.set_external_inventory(external_inventory_owner)
@@ -489,3 +482,12 @@ func _set_player_starting_pos():
 
 
 
+
+
+func _on_inventory_interface_drop_slot_data(slot_data):
+	print ("This is processing")
+	var pickup = PickUp.instantiate()
+	pickup.slot_data = slot_data
+	pickup.position = player.global_position-Vector2(24,24)
+	add_child(pickup)
+	pass # Replace with function body.

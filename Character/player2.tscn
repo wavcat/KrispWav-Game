@@ -1,11 +1,11 @@
 [gd_scene load_steps=30 format=3 uid="uid://cu1k80u0tvgw0"]
 
 [ext_resource type="Script" path="res://Character/player2.gd" id="1_8tjr5"]
-[ext_resource type="Resource" path="res://Data/Inventories/Test_Inventory.tres" id="2_10fbc"]
+[ext_resource type="Resource" uid="uid://if0qv53bvj5a" path="res://Data/Inventories/Test_Inventory.tres" id="2_10fbc"]
 [ext_resource type="Texture2D" uid="uid://3ts22gbi230v" path="res://Sprites/Characters/Basic Charakter Spritesheet.png" id="2_s5m2k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lherf"]
-radius = 3.0
+radius = 4.0
 height = 8.0
 
 [sub_resource type="Animation" id="Animation_w6p88"]
@@ -262,7 +262,7 @@ hframes = 4
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 10)
+position = Vector2(-2, 9)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_lherf")
 
@@ -285,5 +285,5 @@ limit_top = 0
 
 [node name="InteractRay" type="RayCast2D" parent="."]
 position = Vector2(-2, 6)
-target_position = Vector2(16, 0)
+target_position = Vector2(12, 0)
 collision_mask = 4
