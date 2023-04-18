@@ -13,3 +13,6 @@ class_name ItemData
 @export var Stackable : bool = true
 @export var BaseValue : int
 @export var TileAtlasCoords : Vector2
+
+func use(target):
+	pass

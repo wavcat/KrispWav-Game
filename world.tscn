@@ -1,17 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvvh11gtvxkn3"]
+[gd_scene load_steps=18 format=3 uid="uid://cvvh11gtvxkn3"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_3pjnb"]
 [ext_resource type="TileSet" uid="uid://bjay4b3x1oko3" path="res://Sprites/Tilesets/ground tiles/new tiles/Grass Tileset.tres" id="1_plow7"]
 [ext_resource type="Script" path="res://Farming System.gd" id="2_js1rj"]
 [ext_resource type="Texture2D" uid="uid://b0jd21eas2fh8" path="res://Sprites/Tilesets/ground tiles/new tiles/Grass Base.png" id="2_s27aa"]
-[ext_resource type="PackedScene" uid="uid://cu1k80u0tvgw0" path="res://Character/player2.tscn" id="3_g4m0v"]
+[ext_resource type="PackedScene" uid="uid://cfyaeljcp80ap" path="res://Player/player2.tscn" id="5_lu14l"]
 [ext_resource type="Script" path="res://UI/Inventory_Interface.gd" id="6_g0nea"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/Dark World.gdshader" id="6_khvpm"]
 [ext_resource type="PackedScene" uid="uid://dnd5j1blv4hvf" path="res://UI/Inventory.tscn" id="6_xv8dq"]
 [ext_resource type="PackedScene" uid="uid://choj4mkfs4f6m" path="res://UI/Slot.tscn" id="9_bmo8v"]
 [ext_resource type="PackedScene" uid="uid://cuhwcj4dmk70j" path="res://Testing/chest.tscn" id="10_x271p"]
 [ext_resource type="Script" path="res://Scripts/Classes/Inventory_Class.gd" id="11_uefbb"]
 [ext_resource type="Resource" uid="uid://d12gkkdnntmpc" path="res://Data/Items/Test Item 2.tres" id="12_15ii8"]
+[ext_resource type="PackedScene" uid="uid://cran3i3pnqh8p" path="res://UI/hot_bar_inventory.tscn" id="13_76yks"]
 [ext_resource type="Script" path="res://Scripts/Classes/Slot_Class.gd" id="13_ip4pb"]
 [ext_resource type="PackedScene" uid="uid://d3oxc7y0eajik" path="res://Data/Items/pick_up.tscn" id="14_lmifc"]
 
@@ -23,12 +23,6 @@ quantity = 10
 [sub_resource type="Resource" id="Resource_xjn6e"]
 script = ExtResource("11_uefbb")
 slot_datas = Array[ExtResource("13_ip4pb")]([SubResource("Resource_glebe"), null, null, null, null, null, null, null, null, null])
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjlvv"]
-shader = ExtResource("6_khvpm")
-shader_parameter/radius = null
-shader_parameter/player_pos = null
-shader_parameter/screen_size = null
 
 [sub_resource type="Resource" id="Resource_c1k5x"]
 script = ExtResource("13_ip4pb")
@@ -73,14 +67,11 @@ layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array()
 script = ExtResource("2_js1rj")
 
+[node name="Player" parent="." instance=ExtResource("5_lu14l")]
+
 [node name="Chest" parent="." instance=ExtResource("10_x271p")]
 position = Vector2(500, 500)
 inventory_data = SubResource("Resource_xjn6e")
-
-[node name="Player" parent="." instance=ExtResource("3_g4m0v")]
-material = SubResource("ShaderMaterial_hjlvv")
-collision_layer = 2
-collision_mask = 0
 
 [node name="ChunkBoundaries" type="Node2D" parent="."]
 visible = false
@@ -100,23 +91,29 @@ script = ExtResource("6_g0nea")
 [node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("6_xv8dq")]
 layout_mode = 0
 offset_left = 50.0
-offset_top = 118.0
+offset_top = 116.0
 offset_right = 414.0
-offset_bottom = 230.0
+offset_bottom = 228.0
 
 [node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("6_xv8dq")]
 visible = false
 layout_mode = 0
 offset_left = 50.0
-offset_top = 3.0
+offset_top = 2.0
 offset_right = 414.0
-offset_bottom = 115.0
+offset_bottom = 114.0
 
 [node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("9_bmo8v")]
 visible = false
 modulate = Color(1, 1, 1, 0.588235)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+
+[node name="HotBarInventory" parent="UI" instance=ExtResource("13_76yks")]
+offset_left = 50.0
+offset_top = 230.0
+offset_right = 414.0
+offset_bottom = 270.0
 
 [node name="PickUp" parent="." instance=ExtResource("14_lmifc")]
 position = Vector2(135, 66)

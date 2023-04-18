@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal toggle_inventory
 
+var health: int = 5
+
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var ray:=$Arrow/RayCast2D
@@ -28,10 +30,10 @@ func _unhandled_input(event: InputEvent):
 
 
 func _ready():
+	PlayerGameManager.player = self
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta):
-
 	var input_direction = Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -64,3 +66,7 @@ func pick_new_state():
 func interact():
 	if interact_ray.is_colliding():
 		interact_ray.get_collider().player_interact()
+
+
+func heal(heal_value: int):
+	health +=heal_value

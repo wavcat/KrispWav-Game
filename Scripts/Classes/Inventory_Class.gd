@@ -48,6 +48,22 @@ func drop_single_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
 	else:
 		return null
 
+
+func use_slot_data(index: int):
+	var slot_data = slot_datas[index]
+	
+	if not slot_data:
+		return
+	
+	if slot_data.item_data is ItemDataConsumable:
+		slot_data.quantity -= 1
+		if slot_data.quantity <1:
+			slot_datas[index] = null
+	
+	inventory_updated.emit(self)
+	PlayerGameManager.use_slot_data(slot_data)
+	print("Consumable Item Used")
+
 ##Adds the item you picked up. Only called when you run into the pick up item scene in the world to add an item to your inventory.
 func pick_up_slot_data(slot_data: SlotData) -> bool:
 	for index in slot_datas.size():

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Classes/Item_Consumable_Class.gd" id="1_ga6e4"]
+[ext_resource type="Texture2D" uid="uid://cghnf4f0m66cn" path="res://Sprites/Item Icons/Potion Icon.png" id="1_tuh7l"]
+
+[resource]
+script = ExtResource("1_ga6e4")
+heal_value = 2
+ID = 0
+Name = "Test Consumable Item"
+Description = "Just a test template for consumable items like potions."
+ItemType = null
+ResourcePath = ""
+Quantity = 0
+Icon = ExtResource("1_tuh7l")
+StackSize = 0
+Stackable = true
+BaseValue = 0
+TileAtlasCoords = Vector2(0, 0)

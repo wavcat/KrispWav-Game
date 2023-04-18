@@ -1,6 +1,7 @@
 extends Node2D
 @onready var player = $Player
 @onready var inventory_interface = $UI/InventoryInterface
+@onready var hot_bar_inventory = $UI/HotBarInventory
 
 const PickUp = preload("res://Data/Items/pick_up.tscn")
 
@@ -47,6 +48,7 @@ func _ready():
 	_generate_world()
 	inventory_interface.set_player_inventory(player.player_inventory)
 	player.toggle_inventory.connect(toggle_inventory_interface)
+	hot_bar_inventory.set_inventory_data(player.player_inventory)
 	for node in get_tree().get_nodes_in_group("external_inventory"):
 		node.toggle_inventory.connect(toggle_inventory_interface)
 
@@ -82,10 +84,10 @@ func choose(array):
 func toggle_inventory_interface(external_inventory_owner = null):
 	inventory_interface.visible = not inventory_interface.visible
 	
-#	if inventory_interface.visible:
-#		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-#	else:
-#		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if inventory_interface.visible:
+		hot_bar_inventory.hide()
+	else:
+		hot_bar_inventory.show()
 	
 	if external_inventory_owner and inventory_interface.visible:
 		inventory_interface.set_external_inventory(external_inventory_owner)

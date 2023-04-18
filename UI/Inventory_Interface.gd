@@ -52,7 +52,7 @@ func on_inventory_interact(inventory_data: InventoryData, index: int, button: in
 		[_, MOUSE_BUTTON_LEFT]: #If you are holding an item, and you left click a slot, drop that item stack and/or grab the item of the new slot.
 			grabbed_slot_data = inventory_data.drop_slot_data(grabbed_slot_data,index)
 		[null, MOUSE_BUTTON_RIGHT]:
-			pass #Can be used to use an item later.
+			inventory_data.use_slot_data(index)
 		[_, MOUSE_BUTTON_RIGHT]: #If you are holding an item and you right click a slot, drop a single item from the stack and keep the rest of the stack grabbed.
 			grabbed_slot_data = inventory_data.drop_single_slot_data(grabbed_slot_data,index)
 	
