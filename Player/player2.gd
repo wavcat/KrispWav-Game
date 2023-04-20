@@ -10,6 +10,7 @@ var health: int = 5
 @onready var pointer:= $Arrow
 
 @export var player_inventory: InventoryData
+@export var hotbar_inventory: InventoryData
 @onready var interact_ray = $InteractRay
 
 # parameters/Idle/blend_position

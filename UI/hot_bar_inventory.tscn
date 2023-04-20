@@ -16,3 +16,6 @@ theme_override_constants/margin_bottom = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[connection signal="child_entered_tree" from="MarginContainer/HBoxContainer" to="." method="_on_h_box_container_child_entered_tree"]
+[connection signal="child_exiting_tree" from="MarginContainer/HBoxContainer" to="." method="_on_h_box_container_child_exiting_tree"]

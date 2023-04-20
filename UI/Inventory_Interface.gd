@@ -8,6 +8,7 @@ var external_inventory_owner
 @onready var player_inventory = $PlayerInventory
 @onready var grabbed_slot = $GrabbedSlot
 @onready var external_inventory = $ExternalInventory
+@onready var hot_bar_inventory = $HotBarInventory
 
 func _physics_process(delta):
 	if grabbed_slot.visible:
@@ -18,6 +19,10 @@ func _physics_process(delta):
 func set_player_inventory(inventory_data: InventoryData):
 	inventory_data.inventory_interact.connect(on_inventory_interact)
 	player_inventory.set_inventory(inventory_data)
+
+func set_hotbar_inventory(inventory_data: InventoryData):
+	inventory_data.inventory_interact.connect(on_inventory_interact)
+	hot_bar_inventory.set_inventory(inventory_data)
 
 
 #Loads the External Inventory of a chest, only called when a chest is interacted with.
@@ -57,6 +62,7 @@ func on_inventory_interact(inventory_data: InventoryData, index: int, button: in
 			grabbed_slot_data = inventory_data.drop_single_slot_data(grabbed_slot_data,index)
 	
 	update_grabbed_slot()
+	hot_bar_inventory.slot_active(hot_bar_inventory.current_slot)
 
 #Updates the GrabbedSlot Node with the item data. Called whenever you grab or drop an item.
 func update_grabbed_slot():
@@ -81,8 +87,9 @@ func _on_gui_input(event: InputEvent):
 		update_grabbed_slot()
 
 
-func _on_visibility_changed(): #If you are holding an item and you close out of the inventory, automatically drop the entire item stack you were holding.
+func _on_player_inventory_visibility_changed():
 	if not visible and grabbed_slot_data:
 		drop_slot_data.emit(grabbed_slot_data)
 		grabbed_slot_data = null
 		update_grabbed_slot()
+	pass # Replace with function body.

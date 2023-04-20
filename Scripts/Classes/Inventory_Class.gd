@@ -61,8 +61,8 @@ func use_slot_data(index: int):
 			slot_datas[index] = null
 	
 	inventory_updated.emit(self)
+	
 	PlayerGameManager.use_slot_data(slot_data)
-	print("Consumable Item Used")
 
 ##Adds the item you picked up. Only called when you run into the pick up item scene in the world to add an item to your inventory.
 func pick_up_slot_data(slot_data: SlotData) -> bool:
